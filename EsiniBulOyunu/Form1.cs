@@ -221,15 +221,29 @@ namespace EsiniBulOyunu
 
         private void KartOnIzleme()
         {
+            pnlKartlar.Enabled = false;
             foreach (PictureBox pictureBox in kartlar)
             {
                 KartlariAc(pictureBox);
             }
+            if (_seviye==SeviyeSecenekleri.Kolay)
+            {
             Thread.Sleep(1500);
+            }
+            if (_seviye==SeviyeSecenekleri.Orta)
+            {
+            Thread.Sleep(3000);
+            }
+            if (_seviye==SeviyeSecenekleri.Zor)
+            {
+            Thread.Sleep(5000);
+            }
             foreach (PictureBox pictureBox1 in kartlar)
             {
                 KartlariKapat(pictureBox1);
             }
+            Application.DoEvents();
+            pnlKartlar.Enabled = true;
         }
 
         private void Karistirici<T>(IList<T> list)
